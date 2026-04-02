@@ -1,6 +1,30 @@
 #ifndef LLVM_LIB_TARGET_MYARCH_MCTARGETDESC_MYARCHMCTARGETDESC_H
 #define LLVM_LIB_TARGET_MYARCH_MCTARGETDESC_MYARCHMCTARGETDESC_H
 
+#include <cstdint>
+#include <memory>
+
+namespace llvm {
+class MCAsmBackend;
+class MCCodeEmitter;
+class MCContext;
+class MCInstrInfo;
+class MCObjectTargetWriter;
+class MCRegisterInfo;
+class MCSubtargetInfo;
+class MCTargetOptions;
+class Target;
+
+MCCodeEmitter *createMyArchMCCodeEmitter(const MCInstrInfo &MCII,
+                                         MCContext &Ctx);
+MCAsmBackend *createMyArchAsmBackend(const Target &T,
+                                     const MCSubtargetInfo &STI,
+                                     const MCRegisterInfo &MRI,
+                                     const MCTargetOptions &Options);
+std::unique_ptr<MCObjectTargetWriter> createMyArchELFObjectWriter(bool Is64Bit,
+                                                                  uint8_t OSABI);
+} // namespace llvm
+
 // Defines symbolic names for MyArch registers.  This defines a mapping from
 // register name to register number.
 //

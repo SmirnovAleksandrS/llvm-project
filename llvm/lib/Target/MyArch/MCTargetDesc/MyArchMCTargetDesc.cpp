@@ -76,4 +76,9 @@ extern "C" LLVM_EXTERNAL_VISIBILITY void LLVMInitializeMyArchTargetMC() {
 
   // Register the MCInstPrinter
   TargetRegistry::RegisterMCInstPrinter(TheMyArchTarget, createMyArchMCInstPrinter);
+  // Register the MC code emitter.
+  TargetRegistry::RegisterMCCodeEmitter(TheMyArchTarget,
+                                        createMyArchMCCodeEmitter);
+  // Register the asm backend.
+  TargetRegistry::RegisterMCAsmBackend(TheMyArchTarget, createMyArchAsmBackend);
 }

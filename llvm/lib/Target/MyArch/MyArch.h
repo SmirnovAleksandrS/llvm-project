@@ -5,13 +5,13 @@
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/Target/TargetMachine.h"
 
-#define MYARCH_DUMP(Color)                                                        \
+/*#define MYARCH_DUMP(Color)                                                      \
   {                                                                            \
     llvm::errs().changeColor(Color)                                            \
         << __func__ << "\n\t\t" << __FILE__ << ":" << __LINE__ << "\n";        \
     llvm::errs().changeColor(llvm::raw_ostream::WHITE);                        \
-  }
-// #define MYARCH_DUMP(Color) {}
+  }*/
+#define MYARCH_DUMP(Color) {}
 
 #define MYARCH_DUMP_RED MYARCH_DUMP(llvm::raw_ostream::RED)
 #define MYARCH_DUMP_GREEN MYARCH_DUMP(llvm::raw_ostream::GREEN)
